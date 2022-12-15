@@ -1,6 +1,9 @@
-FROM centos:latest
+FROM centos
 MAINTAINER sambirajdar88@gmail.com
-RUN yum install –y httpd \
+RUN cd /etc/yum.repos.d/
+RUN sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
+RUN sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
+Run yum install –y httpd \
   zip \
  unzip 
 ADD https://www.free-css.com/assets/files/free-css-templates/download/page274/branding.zip /var/www/html/
