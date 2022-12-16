@@ -11,5 +11,5 @@ WORKDIR /var/www/html
 RUN unzip branding.zip
 RUN cp -rvf branding/* .
 RUN rm -rf branding branding.zip
-CMD ["/bin/bash"]
+ENTRYPOINT ["tail", "-f", "/dev/null"]
 EXPOSE 80
