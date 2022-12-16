@@ -1,8 +1,5 @@
-FROM centos
+FROM centos:latest
 MAINTAINER sambirajdar88@gmail.com
-RUN cd /etc/yum.repos.d/
-RUN sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
-RUN sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
 RUN yum install -y httpd \
   zip \
  unzip 
@@ -11,5 +8,5 @@ WORKDIR /var/www/html
 RUN unzip branding.zip
 RUN cp -rvf branding/* .
 RUN rm -rf branding branding.zip
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
 EXPOSE 80
