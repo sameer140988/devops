@@ -11,5 +11,5 @@ WORKDIR /var/www/html
 RUN unzip branding.zip
 RUN cp -rvf branding/* .
 RUN rm -rf branding branding.zip
-CMD [“/usr/sbin/httpd”, “-D”, “FOREGROUND”]
+CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
 EXPOSE 80
